@@ -1,0 +1,31 @@
+{% include 'public_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<center>
+	<form method="post">
+		<br><br><br>
+		<h1 class="navx">LOG IN !!</h1><br><br>
+		
+					
+		<table class="table" style="width : 350px;">
+			<tr>
+				<th class="navv">Username</th>
+				<td><input type="text" class="form-control" style="width: auto; height: auto; border-radius: 50px 50px 50px;" required name="uname"></td>
+			</tr>
+			<tr>
+				<th class="navv">Password</th>
+				<td><input type="password" class="form-control" style="width: auto; height: auto; border-radius: 50px 50px 50px;" required name="pword"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" class="btn btn-primary" value="login" name="submit"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+
+{% include 'temp_footer.html' %}
+
+
+
+{% include 'footer.html' %}

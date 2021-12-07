@@ -1,0 +1,47 @@
+{% include 'user_header.html' %}
+
+<!-- {% include 'temp_header.html' %} -->
+
+<center >
+	<br>
+	<h1>{{ data['name'][0]['name'] }}</h1>
+<br></div>
+<form method="post">
+	<div style="height:375px; width:638px; overflow-y: scroll; ">
+<table >
+	{% for row in data['msg'] %}
+	{% if row['sender_id']==session['uid']  %}
+	<tr>
+		<td></td>
+		<td>
+			<input class="btn btn-primary" type="text" class="form-control" name="message" value="{{row['message']}}"></td>
+	</tr>
+	{% else %}
+	<tr>
+		<td><input class="btn btn-info" type="text" class="form-control" name="message" value="{{row['message']}}"></td>
+		<td></td>
+	</tr>
+	{% endif %}
+	{% endfor %}
+	<tr><td><br></td></tr>
+</table>
+</div>
+<table>
+	<tr>
+		<td>
+			<input type="text" style="margin:auto;height:auto; width:350px; border-color: blue" class="form-control" name="msg" >
+		</td>
+		<td align="center">
+			<input type="submit" name="submit" class="btn btn-success" value="Send Message">
+		</td>
+	</tr>
+	<tr><td><br></td></tr>
+</table>
+</form>
+</center>
+
+
+<!-- {% include 'temp_footer.html' %} -->
+
+
+{% include'footer.html' %}

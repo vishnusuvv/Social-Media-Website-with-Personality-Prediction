@@ -1,0 +1,80 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+
+		{% if data['upact'] %}
+
+		<h1>UPDATE AN ACTIVITY</h1>
+		<table  class="table" style="width: 700px;">
+			<tr class="table-info" style="color: black;">
+				<th>Activity</th>
+				<td><textarea required name="activity" class="form-control">{{ data['upact'][0]['activity_name'] }}</textarea></td>
+
+			</tr>
+				<tr>
+				<th>Description</th>
+				<td><textarea required name="desc"  class="form-control">{{ data['upact'][0]['activity_details'] }}</textarea></td>
+				
+			</tr>
+			</tr> 
+			<tr>
+				<td align="center"  colspan="2"><input class="btn btn-info" type="submit" value="update" name="submits"></td>
+			</tr>
+		</table>
+
+		{% else %}
+
+<br>
+		<h1>ADD AN ACTIVITY</h1>
+		<table>
+			<tr><br>
+				<th>Activity</th>
+				<td><input type="text" required name="activity" class="form-control"></textarea></td>
+
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td><textarea required name="desc"  class="form-control"></textarea></td>
+				
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input class="btn btn-info" type="submit" value="post" name="submit"></td>
+			</tr>
+		</table>
+
+		{% endif %}
+
+
+		<br>
+		<br>
+		<h1>MY ACTIVITY</h1>
+		<table>
+			<tr>
+				<th>Sno</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Actions</th>
+			</tr>
+
+			{% for row in data['activity'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['activity_name'] }}</td>
+				<td>{{ row['activity_details'] }}</td>
+				<td><a href="?action=update&aid={{ row['activity_id'] }}" class="btn btn-info btn-sm">Update</a>
+				<a href="?action=delete&aid={{ row['activity_id'] }}" class="btn btn-danger btn-sm">Delete</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

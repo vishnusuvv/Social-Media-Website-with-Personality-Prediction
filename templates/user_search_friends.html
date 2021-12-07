@@ -1,0 +1,48 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+		<br>
+		<h1>SEARCH FRIENDS</h1><br>
+		<table>
+			<tr>
+				<th>Friend name</th>
+				<td><input type="text" class="form-control" style="width: 350px;" name="fname"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><br><input style="width: auto; height: auto; border-radius: 50px 50px 50px;" class="btn btn-info bt" type="submit" value="search" name="submit"></td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<h1>PEOPLE YOU MAY KNOW</h1>
+		<br>
+		<table>
+			<tr>
+				<th>Sno</th>
+				<th>User name</th>
+				<th>Phone</th>
+				<th>Email</th>
+			</tr>
+
+			{% for row in data['users'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['user_name'] }}</td>
+				<td>{{ row['phone'] }}</td>
+				<td>{{ row['email'] }}</td>
+				<td><a style="width: auto; height: auto; border-radius: 50px 50px 50px;" href="?action=request&fid={{ row['user_id'] }}" class="btn btn-info btn-sm">Request</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

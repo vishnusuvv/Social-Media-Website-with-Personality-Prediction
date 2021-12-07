@@ -1,0 +1,49 @@
+{% include 'admin_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+
+		<br>
+		<h1>MANAGE POSTS</h1>
+		<br>
+		<table class="table table-striped" style="width: 700px;">
+			<tr class="table-info" style="color: black;">
+				<th>Sno</th>
+				<th>User name</th>
+				<th>Title</th>
+				<th>Post content</th>
+				<th>Date</th>
+				<th>Image</th>
+				<th>Predicted</th>
+				<th>Action</th>
+			</tr>
+
+			{% for row in data['posts'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['user_name'] }}</td>
+				<td>{{ row['title'] }}</td>
+				<td>{{ row['post_content'] }}</td>
+				<td>{{ row['date'] }}</td>
+				<td><a href="/{{ row['image'] }}"><img style="width:100px; height:100px; opacity: 1 !important" src="/{{ row['image'] }}"></a></td>
+				<td>{{ row['personality'] }}</td>
+				<td><a href="?action=remove&pid={{ row['post_id'] }}" style="width: auto; height: auto; border-radius: 50px 30px 50px;"  class="btn btn-danger btn-sm">Remove</a>
+				<a href="admin_view_comments?pid={{ row['post_id'] }}" style="width: auto; height: auto; border-radius: 50px 30px 50px;"  class="btn btn-warning btn-sm">Comments</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}
+<style type="text/css">
+	img{opacity:1 !important; }
+	table{opacity: 1 !important;}
+</style>

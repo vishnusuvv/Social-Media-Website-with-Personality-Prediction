@@ -1,0 +1,45 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+
+
+		<h1>POSTS</h1>
+		{% if data['posts'] %}
+		<table  class="table" style="width: 700px;">
+			<tr class="table-info" style="color: black;">
+				<th>Sno</th>
+				<th>User name</th>
+				<th>Title</th>
+				<th>Content</th>
+				<th>Image</th>
+				<th>Action</th>
+			</tr>
+
+			{% for row in data['posts'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['user_name'] }}</td>
+				<td>{{ row['title'] }}</td>
+				<td>{{ row['post_content'] }}</td>
+				<td><img style="width:100px; height:100px padding: 10px;" src="/{{ row['image'] }}"></td>
+				<td ><a href="user_make_comments?pid={{ row['post_id'] }}" class="btn btn-info">Comment</a></td>
+			</tr>
+
+			{% endfor %}
+
+
+		</table>
+		{% else %}
+		<br><br>
+		<p> Make Friends and wait for them to put up posts.</p>
+		{% endif %}
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

@@ -1,0 +1,59 @@
+{% include 'public_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center><br>
+		
+		<h1 class="navx">REGISTER HERE</h1>
+		<div class="container pt-3 container-fluid ">
+		<table  style="width: 500px;">
+			<tr >
+				<th class="navv">First name</th>
+				<td><input style="width: auto; height: auto ; border-radius: 50px 50px 50px;"  class="form-control" type="text" required name="fname"></td>
+			</tr>
+			<tr>
+				<th class="navv">Last name</th>
+				<td><input style="width: auto; height: auto ; border-radius: 50px 50px 50px;" class="form-control" type="text" required name="lname"></td>
+			</tr>
+			<tr>
+				<th class="navv">Gender</th>
+				<td class="navv"><input  type="radio"  name="gender" value="male"><text STYLE="color: black; "> Male</text>
+					<input style="width: auto; height: auto ; border-radius: 50px 50px 50px;" type="radio"  name="gender" value="female"><text STYLE="color: black; "> Female</text></td>
+			</tr>
+			<tr>
+				<th class="navv">DOB</th>
+				<td><input style="width: auto; height: auto ; border-radius: 50px 50px 50px;" type="date" class="form-control" min="1980-12-31" max="2010-12-31" required name="dob"></td>
+			</tr>
+			<tr>
+				<th class="navv">Phone</th>
+				<td><input style="width: auto; height: auto ; border-radius: 50px 50px 50px;" type="phone" class="form-control"  min=10 max=10 required name="phone"></td>
+			</tr>
+			<tr>
+				<th class="navv">Email</th>
+				<td><input style="width: auto; height: auto ; border-radius: 50px 50px 50px;" type="email" class="form-control" required name="email"></td>
+			</tr>
+		</div>
+		</table>
+		<table style="width: 500px;"><br>
+			<tr>
+				<th class="navv">Username</th>
+				<td><input style="width: auto; height: auto ; border-radius: 50px 50px 50px;" type="text" class="form-control" required name="uname"></td>
+			</tr>
+			<tr>
+				<th class="navv">Password</th>
+				<td><input style="width: auto; height: auto ; border-radius: 50px 50px 50px;" type="password" class="form-control" required name="pword"></td>
+			</tr>
+			</table>
+			<table align="center">
+			<tr>
+				<td align="right"><input style="width: auto; height: auto ; border-radius: 50px 50px 50px;" class="btn btn-primary" type="submit" value="Register" name="submit"></td>
+			</tr>
+			</table>
+		
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

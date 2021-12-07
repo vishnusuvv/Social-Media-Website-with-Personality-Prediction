@@ -1,0 +1,36 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+
+
+		<h1>POSTS</h1>
+		
+		
+
+			{% for row in data['posts'] %}
+			<table border='2'>
+
+			<p>—————————————————————————————————————————————</p>
+				
+				<th align='left'>{{ row['user_name'] }}  • {{ row['title'] }}</th>
+				
+			<tr>
+				<table border='1'>
+				<td align='center'>{{ row['post_content'] }}</td>
+				</table>
+				<td align="left"><a href="user_make_comments?pid={{ row['post_id'] }}">Comment</a></td>
+			</tr>
+			
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

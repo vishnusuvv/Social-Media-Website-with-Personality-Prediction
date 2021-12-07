@@ -1,0 +1,48 @@
+{% include 'admin_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center><br>
+		<h1>COMPLAINTS</h1><br>
+		<table  class="table" style="width: 700px;">
+			<tr class="table-info" style="color: black;">
+				<th>Sno</th>
+				<th>User name</th>
+				<th>Complaint</th>
+				<th>Reply</th>
+				<th>Date time</th>
+			</tr>
+
+			{% for row in data['complaints'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['user_name'] }}</td>
+				<td>{{ row['complaint'] }}</td>
+
+				{% if row['reply']=='pending' %}
+				
+				<td><input type="text" class="form-control" style="width: 125px; height: 25px; border-radius: 50px 30px 50px;" name="reply{{loop.index}}">
+ 					<input type="hidden" name="ids{{loop.index}}" value="{{ row['complaint_id']}}">
+ 					<input type="submit" class="btn btn-info btn-sm" style="width: auto; height: auto ; border-radius: 50px 30px 50px;" name="replys{{loop.index}}" value="Reply"></td>
+
+ 				{% else %}
+
+ 					<td>{{ row['reply'] }}</td>
+
+ 				{% endif %}
+
+				<td>{{ row['date'] }}</td>
+
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

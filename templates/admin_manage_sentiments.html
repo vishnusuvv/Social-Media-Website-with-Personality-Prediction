@@ -1,0 +1,144 @@
+	{% include 'admin_header.html' %}
+
+	{% include "temp_header.html" %}
+					
+						
+<form method="post">
+	<center>
+
+		{% if data['upsenti'] %}
+
+
+<h1>UPDATE SENTIMENTS</h1>
+ 	<table class="table" style="width: 700px;">
+
+			<tr>
+				<th>Gender</th>
+				<td><input type="radio" class="form-control" checked value="male" required name="gender">Male
+					<input type="radio" class="form-control" checked value="female" required name="gender">Female</td>
+			</tr>
+			<tr>
+				<th>Age</th>
+				<td><input type="text" class="form-control" value="{{ data['upsenti'][0]['age'] }}" required name="age"></td>
+			</tr>
+			<tr>
+				<th>Openness</th>
+				<td><input type="text" value="{{ data['upsenti'][0]['openess'] }}" class="form-control" required name="oness"></td>
+			</tr>
+			<tr>
+				<th>Neuroticism</th>
+				<td><input type="text" value="{{ data['upsenti'][0]['neuroticism'] }}" class="form-control" required name="ncism"></td>
+			</tr>
+			<tr>
+				<th>conscientiousness</th>
+				<td><input type="text" value="{{ data['upsenti'][0]['conscientiousness'] }}" class="form-control" required name="cness"></td>
+			</tr>
+			<tr>
+				<th>Agreeableness</th>
+				<td><input type="text" value="{{ data['upsenti'][0]['agreeableness'] }}" class="form-control" required name="aness"></td>
+			</tr>
+			<tr>
+				<th>Extraversion</th>
+				<td><input type="text" value="{{ data['upsenti'][0]['extraversion'] }}" class="form-control" required name="eversion"></td>
+			</tr>
+			<tr>
+				<th>Personality</th>
+				<td><input type="text" value="{{ data['upsenti'][0]['personality'] }}" class="form-control" required name="pnality"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" class="btn btn-primary" value="update" name="submits"></td>
+			</tr>
+		</table>
+
+		{% else %}
+		<h1>MANAGE SENTIMENTS</h1>
+ 	<table class="table" style="width: 700px;">
+
+			<tr>
+				<th>Gender</th>
+				<td><input type="radio" class="form-control" value="male" required name="gender">Male
+					<input type="radio" class="form-control" value="female" required name="gender">Female</td>
+			</tr>
+			<tr>
+				<th>Age</th>
+				<td><input type="text" class="form-control" required name="age"></td>
+			</tr>
+			<tr>
+				<th>Openness</th>
+				<td><input type="text" class="form-control" required name="oness"></td>
+			</tr>
+			<tr>
+				<th>Neuroticism</th>
+				<td><input type="text" class="form-control" required name="ncism"></td>
+			</tr>
+			<tr>
+				<th>conscientiousness</th>
+				<td><input type="text" class="form-control" required name="cness"></td>
+			</tr>
+			<tr>
+				<th>Agreeableness</th>
+				<td><input type="text" class="form-control" required name="aness"></td>
+			</tr>
+			<tr>
+				<th>Extraversion</th>
+				<td><input type="text" class="form-control" required name="eversion"></td>
+			</tr>
+			<tr>
+				<th>Personality</th>
+				<td><input type="text" class="form-control" required name="pnality"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" class="btn btn-primary" value="add" name="submit"></td>
+			</tr>
+		</table>
+
+
+		{% endif %}
+
+
+		<br><br>
+		<h1>SENTIMENTS</h1>
+		<table  class="table" style="width: 700px;">
+
+			<tr class="table-info" style="color: black;">
+				<th>Sno</th>
+				<th>Gender</th>
+				<th>Age</th>
+				<th>Openess</th>
+				<th>Neuroticism</th>
+				<th>Conscientiousness</th>
+				<th>Agreeableness</th>
+				<th>Extraversion</th>
+				<th>Personality</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+
+			{% for row in data['sentiments'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['gender'] }}</td>
+				<td>{{ row['age'] }}</td>
+				<td>{{ row['openness'] }}</td>
+				<td>{{ row['neuroticism'] }}</td>
+				<td>{{ row['conscientiousness'] }}</td>
+				<td>{{ row['agreeableness'] }}</td>
+				<td>{{ row['extraversion'] }}</td>
+				<td>{{ row['personality'] }}</td>
+				<td><a href="?action=delete&sid={{ row['sentiment_id'] }}" class="btn btn-danger">Delete</a></td>
+				<td><a href="?action=update&sid={{ row['sentiment_id'] }}" class="btn btn-warning">Update</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+
+
+{% include "temp_footer.html" %}
+
+{% include 'footer.html' %}
+

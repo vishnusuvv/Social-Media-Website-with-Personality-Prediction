@@ -1,0 +1,53 @@
+{% include 'admin_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center><br>
+		<h1>USERS</h1><br>
+		<table  class="table" style="width: 700px; border-radius: 15px 50px 30px;">
+			<tr class="table-info" style="color: black;">
+				<th>Sno</th>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Gender</th>
+				<th>DOB</th>
+				<th>Phone</th>
+				<th>Email</th>
+			</tr>
+
+			{% for row in data['users'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['first_name'] }}</td>
+				<td>{{ row['last_name'] }}</td>
+				<td>{{ row['gender'] }}</td>
+				<td>{{ row['dob'] }}</td>
+				<td>{{ row['phone'] }}</td>
+				<td>{{ row['email'] }}</td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+		<a class="btn btn-info btn-sm" style="width: auto; height: auto ; border-radius: 50px 30px 50px;" href="admin_user_report">GENERATE DATE WISE REPORT </a>
+	</center>
+</form>
+<style type="text/css">
+	img{opacity:1 !important; }
+	table{opacity: 1 !important;
+		
+  padding: 20px;
+  width: 200px;
+  height: 150px}
+	td
+		{
+			color: white;
+			font-size: 14px;
+		}
+</style>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

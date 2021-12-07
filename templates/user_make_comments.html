@@ -1,0 +1,70 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+
+		{% if data['upcom'] %}
+
+<br>
+		<h1>UPDATE COMMENT</h1><br>
+		<table style="width : 350px;">
+			<tr>
+				<th>Comment</th>
+				<td><textarea style="width : 350px;" name="comment" class="form-control">{{ data['upcom'][0]['comment'] }}</textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit"  class="btn btn-info" value="update" name="submits"></td>
+			</tr>
+		</table>-
+
+		{% else %}
+<br>
+		<h1>COMMENT</h1><br>
+		<table style="width : 350px;">
+			<tr>
+				<th>Comment</th>
+				<td><textarea style="width : 350px;" name="comment" class="form-control"></textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><br><input style="width: auto; height: auto; border-radius: 50px 30px 50px;" class="btn btn-info" type="submit" value="comment" name="submit"></td>
+			</tr>
+		</table>
+
+		{% endif %}
+		<br>
+		<h1>COMMENTS</h1>
+		<table>
+			<tr>
+				<th>Sno</th>
+				<th>User name</th>
+				<th>Title</th>
+				<th>Post content</th>
+				<th>Comment</th>
+				<th>Date & time</th>
+				<th>Action</th>
+			</tr>
+
+			{% for row in data['comment'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['user_name'] }}</td>
+				<td>{{ row['title'] }}</td>
+				<td>{{ row['post_content'] }}</td>
+				<td>{{ row['comment'] }}</td>
+				<td>{{ row['date_time'] }}</td>
+				<td ><a style="width: auto; height: auto; border-radius: 50px 30px 50px;" class="btn btn-warning btn-sm" href="?action=update&cid={{ row['comment_id'] }}&pid={{ data['pid'] }}">Update</a>
+					<a style="width: auto; height: auto; border-radius: 50px 30px 50px;" class="btn btn-danger btn-sm" href="?action=delete&cid={{ row['comment_id'] }}&pid={{ data['pid'] }}">Delete</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

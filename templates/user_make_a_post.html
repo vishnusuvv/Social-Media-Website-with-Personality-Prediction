@@ -1,0 +1,105 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<style type="text/css">
+	th{
+		color: #000;
+	}
+	th{
+		color: #000;
+	}
+</style>
+<form method="post" enctype="multipart/form-data">
+	<center>
+
+		{% if data['uppost'] %}
+		<br>
+		<h1>UPDATE A POST</h1><br>
+		<table>
+			<tr>
+				<th>Title</th>
+				<td><input type="text" class="form-control" value="{{ data['uppost'][0]['title'] }}" required name="title"></td>
+			</tr>
+			<tr>
+				<th>Content</th>
+				<td><textarea name="content" class="form-control">{{ data['uppost'][0]['post_content'] }}</textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input style="width: auto; height: auto; border-radius: 50px 30px 50px;" align="right" class="btn btn-info" type="submit" value="update" name="submits"></td>
+			</tr>
+		</table>
+
+		{% else %}
+
+<br>
+		<h1>ADD A POST</h1>
+		<br>
+		<table class="table" style="width: 600px;">
+			<tr>
+				<th>Title</th>
+				<td><input type="text" required name="title" class="form-control"></td>
+			</tr>
+			
+			<tr>
+				<th>Images</th>
+				<td><input class="form-control" type="file" name="image"></td>
+			</tr>
+			<tr>
+				<th>Content</th>
+				<td><textarea name="content" class="form-control"></textarea></td>
+			</tr>
+			<tr>
+				<td  align="center" colspan="2" style="width: auto; height: auto; border-radius: 50px 30px 50px;"><input style="width: auto; height: auto; border-radius: 50px 50px 50px;" align="right" class="btn btn-info" type="submit" value="post" name="submit" class="btn btn-info"></td>
+			</tr>
+		</table>
+
+		{% endif %}
+
+
+		
+		<h1>MY POSTS</h1><br>
+		<table  class="table table-striped" style="width: 700px;">
+			<tr class="table-info" style="color: black;">
+				<th>Sno</th>
+				<th>Title</th>
+				<th>Content</th>
+				<th>Image</th>
+				<th>Action</th>
+				
+			</tr>
+
+			{% for row in data['posts'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['title'] }}</td>
+				<td>{{ row['post_content'] }}</td>
+				<td><a href="/{{ row['image'] }}"><img style="width:100px; height:100px" src="/{{ row['image'] }}"></a></td>
+				
+				<td><a style="width: auto; height: auto; border-radius: 50px 30px 50px;" class="btn btn-warning btn-sm" href="?action=update&pid={{ row['post_id'] }}">Update</a>
+				<a style="width: auto; height: auto; border-radius: 50px 30px 50px;" class="btn btn-danger btn-sm" href="?action=delete&pid={{ row['post_id'] }}">Delete</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+<style type="text/css">
+	img{opacity:1 !important; }
+	table{opacity: 1 !important;
+		border-radius: 15px 50px 30px;
+  padding: 20px;
+  width: 200px;
+  height: 150px}
+	td
+		{
+			color: black;
+			font-size: 14px;
+		}
+</style>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

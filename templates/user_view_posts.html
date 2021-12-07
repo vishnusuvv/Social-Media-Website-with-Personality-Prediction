@@ -1,0 +1,63 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+
+<br>
+		<h1>My Feed</h1>
+		<br>
+		{% if data['posts'] %}
+			{% for row in data['posts'] %}
+		<table  class="table" style="width: 500px;">
+			<tr class="table-info" style="color: black;">
+			
+				
+				<th>{{ row['user_name'] }}</th>
+				
+				
+				
+				
+			</tr>
+
+			
+
+			<tr class="table-info">
+				
+				
+				<td class="table-info"><b>{{ row['title'] }}</b> «•» {{ row['post_content'] }}</td>
+				</tr>
+			<tr class="table-info">	
+				<td><a href="/{{ row['image'] }}"><img style="  display: block;
+  margin-left: auto;
+  margin-right: auto;width:250px; height:250px; padding:5px; border-radius: 50px 50px 50px; border: 1px solid #ddd;
+  border-radius: 4px;" src="/{{ row['image'] }}"></td></a></tr>
+				<tr class="table-info">
+				<td ><a href="user_make_comments?pid={{ row['post_id'] }}" style= "margin-left: auto;
+  margin-right: auto;width:auto; height:auto;border-radius: 50px 50px 50px;" class="btn btn-info margin-left">Comment</a></td>
+			</tr>
+
+			{% endfor %}
+
+
+		</table>
+		{% else %}
+		<br><br>
+		<p> Make Friends and wait for them to put up posts.</p>
+		{% endif %}
+	</center>
+</form>
+<style type="text/css">
+	img{opacity:1 !important; }
+	table{opacity: 1 !important;}
+	td
+		{
+			color: black;
+			font-size: 14px;
+		}
+</style>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

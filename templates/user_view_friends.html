@@ -1,0 +1,40 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+
+<br>
+		<h1>FRIENDS</h1>
+		<br><br>
+		{% if data['friends'] %}
+		<table style="width: 350px">
+			<tr>
+				<th>Sno</th>
+				<th>User name</th>
+
+			</tr>
+
+			{% for row in data['friends'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['user_name'] }}</td>
+
+				<td><a style="width: auto; height: auto; border-radius: 50px 30px 50px;" href="user_chat?cid={{ row['user_id'] }}" class="btn btn-info btn-sm">Chat</a></td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+		{% else %}
+		<br><br>
+		<p> Make Friends and chat with them.</p>
+		{% endif %}
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

@@ -1,0 +1,31 @@
+{% include 'admin_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center><br>
+		<h1>FEEDBACK</h1><br>
+		<table class="table" style="width: 700px;">
+			<tr class="table-info" style="color: black;">
+				<th>Sno</th>
+				<th>User name</th>
+				<th>Feedback</th>
+			</tr>
+
+			{% for row in data['feedback'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['user_name'] }}</td>
+				<td>{{ row['feedback_details'] }}</td>
+			</tr>
+
+			{% endfor %}
+
+		</table>
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}

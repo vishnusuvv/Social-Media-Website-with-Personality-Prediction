@@ -1,0 +1,65 @@
+{% include 'user_header.html' %}
+
+{% include 'temp_header.html' %}
+
+<form method="post">
+	<center>
+
+		{% if data['upfeed'] %}
+
+<br>
+		<h1>UPDATE A FEEDBACK</h1><br>
+		<table>
+			<tr>
+				<th>Feedback</th>
+				<td><textarea style="width: 300px; height: 50px;" class="form-control" required name="feedback">{{ data['upfeed'][0]['feedback_details'] }}</textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><br><input style="width: auto; height: auto; border-radius: 50px 50px 50px;" type="submit" value="update" name="submits" class="btn btn-info "></td>
+			</tr>
+		</table>
+
+		{% else %}
+<br>		
+		<h1>SENT A FEEDBACK</h1><br>
+		<table>
+			<tr>
+				<th>Feedback</th>
+				<td><textarea style="width: 300px; height: 50px;" required name="feedback" class="form-control"></textarea></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><br><input style="width: auto; height: auto; border-radius: 50px 50px 50px;" type="submit" value="sent" name="submit" class="btn btn-info"></td>
+			</tr>
+		</table>
+
+		{% endif %}
+
+
+		<br>
+		<br>
+		<h1>FEEDBACKS</h1><br>
+		<center>
+		<table>
+			<tr>
+				<th>Sno</th>
+				<th>Feedback</th>
+				<th>Action</th>
+			</tr>
+
+			{% for row in data['feedback'] %}
+
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>{{ row['feedback_details'] }}</td>
+				<td><a  style="width: auto; height: auto; border-radius: 50px 30px 50px;" href="?action=update&fid={{ row['feedback_id'] }}" class="btn btn-warning btn-sm">Update</a>
+				<a style="width: auto; height: auto; border-radius: 50px 30px 50px;" href="?action=delete&fid={{ row['feedback_id'] }}" class="btn btn-danger btn-sm">Delete</a></td>
+			</tr>
+
+			{% endfor %}
+		</table></center>
+	</center>
+</form>
+
+{% include 'temp_footer.html' %}
+
+{% include 'footer.html' %}
